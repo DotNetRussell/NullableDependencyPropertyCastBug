@@ -16,11 +16,16 @@ namespace NullableDependencyPropertyCastBug
             get { return (decimal?)GetValue(TestDecimalProperty); }
             set { SetValue(TestDecimalProperty, value); }
         }
-
         public static readonly DependencyProperty TestDecimalProperty =
-            DependencyProperty.Register("TestDecimal", typeof(object), typeof(TestControl), new PropertyMetadata(0));
+         DependencyProperty.Register("TestDecimal", typeof(object), typeof(TestControl), new PropertyMetadata(0));
 
-        
+
+        // THIS IS THE SOLUTION
+        // and this link explains why  https://stackoverflow.com/a/57711265/2051392 
+        //public static readonly DependencyProperty TestDecimalProperty =
+        //    DependencyProperty.Register("TestDecimal", typeof(object), typeof(TestControl), new PropertyMetadata(null));
+
+
         public TestControl()
         {
             this.InitializeComponent();
